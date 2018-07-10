@@ -5,7 +5,7 @@
 from flask import Flask, jsonify
 
 
-app = Flask(__name__)  # pylint: disable=invalid-name
+app = Flask(__name__)   # pylint: disable=invalid-name
 
 
 @app.route('/')
