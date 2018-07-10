@@ -27,11 +27,6 @@ VENV_ACTIVATE=. $(VENV_NAME)/bin/activate
 PYTHON_PATH=/usr/local/bin/python3.6
 PYTHON=${VENV_NAME}/bin/python3.6
 
-activate: ## Install dependencies.
-	${VENV_ACTIVATE}
-	pip install --upgrade pip
-	pip install -r requirements.txt
-
 clean-pyc: ## Remove Python file artifacts.
 	find . -name '*.pyc' -exec rm -f {} +
 	find . -name '*.pyo' -exec rm -f {} +
@@ -40,6 +35,11 @@ clean-pyc: ## Remove Python file artifacts.
 
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
+
+install: ## Install dependencies.
+	${VENV_ACTIVATE}
+	pip install --upgrade pip
+	pip install -r requirements.txt
 
 lint: ## Lint project.
 	${PYTHON} -m flake8
