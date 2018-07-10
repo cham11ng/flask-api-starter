@@ -1,6 +1,7 @@
 {
   "python.pythonPath": "${workspaceFolder}/venv/bin/python",
   "editor.tabSize": 4,
+  "autoDocstring.docstringFormat": "sphinx",
   "python.linting.flake8Enabled": true,
   "python.linting.pylintEnabled": true,
   "python.linting.lintOnSave": true,
