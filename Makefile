@@ -42,6 +42,7 @@ help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
 lint: ## Lint project.
+	${PYTHON} -m flake8
 	${PYTHON} -m pylint run.py
 
 mvenv: ## Create virtual environment.
