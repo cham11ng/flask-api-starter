@@ -1,13 +1,19 @@
 {
-  "python.pythonPath": "${workspaceFolder}/venv/bin/python",
-  "editor.tabSize": 4,
-  "autoDocstring.docstringFormat": "sphinx",
-  "python.linting.flake8Enabled": true,
-  "python.linting.pylintEnabled": true,
-  "python.linting.lintOnSave": true,
-  "python.formatting.provider": "autopep8",
-  "editor.formatOnSave": true,
-  "python.linting.enabled": true,
+  "pylint.args": [
+    "--max-line-length=120",
+    "--logging-fstring-interpolation=fstr"
+  ],
+  "black-formatter.args": [
+    "--line-length=120"
+  ],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.testing.pytestArgs": [
+    "python"
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
   "files.exclude": {
     "**/.git": true,
     "**/.pyc": true,
@@ -19,5 +25,9 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true
-  }
+  },
+  "cSpell.words": [
+    "dotenv",
+    "jsonify"
+  ]
 }

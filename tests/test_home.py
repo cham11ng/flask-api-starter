@@ -1,15 +1,15 @@
-"""
-    Flask API tests.
-"""
+"""Flask API tests."""
 
-from run import app
+import sys
+import os
+import pytest
+
+from src.app import app
 
 
-with app.test_client() as c:
-    rv = c.get('/')             # pylint: disable=invalid-name
-    json_data = rv.get_json()   # pylint: disable=invalid-name
+def test_home():
+    with app.test_client() as client:
+        rv = client.get("/")
+        json_data = rv.get_json()
 
-    assert json_data == {
-        'name': 'Flask API',
-        'version': '0.0.1'
-    }
+        assert json_data == {"name": "Flask API", "version": "0.1.0"}

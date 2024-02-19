@@ -22,12 +22,12 @@ endef
 export PRINT_HELP_PYSCRIPT
 
 
-VENV_NAME?=venv
+VENV_NAME?=.venv
 VENV_ACTIVATE=. $(VENV_NAME)/bin/activate
-PYTHON_PATH=/usr/local/bin/python3.6
-PYTHON=${VENV_NAME}/bin/python3.6
+PYTHON_PATH=/usr/local/bin/python3.9.6
+PYTHON=${VENV_NAME}/bin/python
 
-clean-pyc: ## Remove Python file artifacts.
+clean: ## Remove Python file artifacts.
 	find . -name '*.pyc' -exec rm -f {} +
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +
@@ -41,15 +41,22 @@ install: ## Install dependencies.
 	pip install --upgrade pip
 	pip install -r requirements.txt
 
+upgrade: ## Upgrade dependencies.
+	pip install --upgrade pip
+	pip install -r requirements.txt --upgrade
+	pip freeze > requirements.txt
+
 lint: ## Lint project.
-	${PYTHON} -m flake8
-	${PYTHON} -m pylint run.py
+	pylint .
 
 mvenv: ## Create virtual environment.
-	virtualenv -p ${PYTHON_PATH} venv
+	virtualenv -p ${PYTHON_PATH} .venv
 
 run: ## Run application.
-	${PYTHON} run.py
+	flask --app src/app run
+
+debug: ## Debug application
+	flask --app src/app --debug run
 
 test: ## Run tests.
 	${PYTHON} -m pytest
