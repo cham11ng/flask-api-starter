@@ -33,8 +33,8 @@ clean: ## Remove Python file artifacts.
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -fr {} +
 
-help:
-	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
+mvenv: ## Create virtual environment.
+	${PYTHON} -m virtualenv -p ${PYTHON_PATH} .venv
 
 install: ## Install dependencies.
 	${VENV_ACTIVATE}
@@ -47,16 +47,19 @@ upgrade: ## Upgrade dependencies.
 	pip freeze > requirements.txt
 
 lint: ## Lint project.
-	pylint .
+	${PYTHON} -m pylint src tests
 
-mvenv: ## Create virtual environment.
-	virtualenv -p ${PYTHON_PATH} .venv
+pretty: ## Prettify project.
+	${PYTHON} -m black .
 
 run: ## Run application.
-	flask --app src/app run
+	${PYTHON} -m flask --app src/app run
 
-debug: ## Debug application
-	flask --app src/app --debug run
+debug: ## Debug application.
+	${PYTHON} -m flask --app src/app --debug run
 
 test: ## Run tests.
 	${PYTHON} -m pytest
+
+help:
+	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)

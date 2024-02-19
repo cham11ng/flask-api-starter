@@ -1,4 +1,9 @@
 {
+  "pylint.path": [
+    "~/.venv/bin/python",
+    "-m",
+    "pylint"
+  ],
   "pylint.args": [
     "--max-line-length=120",
     "--logging-fstring-interpolation=fstr"

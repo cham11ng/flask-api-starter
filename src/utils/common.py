@@ -1,6 +1,6 @@
-'''
-    Common utils of the application.
-'''
+"""
+Common utils of the application.
+"""
 
 from http import HTTPStatus
 from http.client import responses
@@ -46,9 +46,12 @@ def enum_response(enum):
     :rtype: json
     """
 
-    code, data = enum.value[2:], env('MESSAGES')
+    code, data = enum.value[2:], env("MESSAGES")
 
-    return json_response({
-        'code': enum.value,
-        'message': data[enum.value] if enum.value in data else responses[code]
-    }, code)
+    return json_response(
+        {
+            "code": enum.value,
+            "message": data[enum.value] if enum.value in data else responses[code],
+        },
+        code,
+    )
