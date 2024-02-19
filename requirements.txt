@@ -19,5 +19,5 @@ pyflakes==1.6.0
 pylint==1.9.2
 pytest==3.6.3
 six==1.11.0
-Werkzeug==0.14.1
+Werkzeug==2.3.8
 wrapt==1.10.11
