@@ -1,4 +1,5 @@
 {
-  "FC404": "Not found.",
-  "FC500": "Server error."
+  "FC404": "Not Found.",
+  "FC500": "Internal Server Error.",
+  "FC405": "Method Not Allowed."
 }

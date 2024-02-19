@@ -36,6 +36,10 @@ class ProductionConfig(Config):
 
 
 def get_config():
-    config = {"development": DevelopmentConfig, "production": ProductionConfig, "default": DevelopmentConfig}
+    config = {
+        "development": DevelopmentConfig,
+        "production": ProductionConfig,
+        "default": DevelopmentConfig,
+    }
 
     return config.get(os.environ.get("FLASK_ENV", "default"))
