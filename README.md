@@ -34,7 +34,8 @@ test                 Run tests.
 $ make run
 * Serving Flask app 'src/app'
  * Debug mode: off
-WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+WARNING: This is a development server. Do not use it in a production deployment.
+Use a production WSGI server instead.
  * Running on http://127.0.0.1:5000
 Press CTRL+C to quit
 ```
@@ -42,7 +43,8 @@ Press CTRL+C to quit
 ```bash
 curl -X GET localhost:5000
 
-curl -X POST -H "Content-Type: application/json" -d '{"hello": "request"}' localhost:5000/health
+curl -X POST -H "Content-Type: application/json" \
+  -d '{"hello": "request"}' localhost:5000/health
 ```
 
 ## Happy Coding
